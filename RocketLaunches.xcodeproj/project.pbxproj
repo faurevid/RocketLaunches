@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D5412078215AC156005BA500 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5412077215AC156005BA500 /* DataManager.swift */; };
 		D541207A215AF3C0005BA500 /* LaunchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5412079215AF3C0005BA500 /* LaunchDetailViewController.swift */; };
 		D541207C215AF3CF005BA500 /* LaunchDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D541207B215AF3CF005BA500 /* LaunchDetailPresenter.swift */; };
 		D541207E215AF3E0005BA500 /* LaunchDetailProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D541207D215AF3E0005BA500 /* LaunchDetailProtocol.swift */; };
@@ -47,7 +46,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D5412077215AC156005BA500 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		D5412079215AF3C0005BA500 /* LaunchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetailViewController.swift; sourceTree = "<group>"; };
 		D541207B215AF3CF005BA500 /* LaunchDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetailPresenter.swift; sourceTree = "<group>"; };
 		D541207D215AF3E0005BA500 /* LaunchDetailProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetailProtocol.swift; sourceTree = "<group>"; };
@@ -133,7 +131,6 @@
 				D5B45DA4215A900000EF1478 /* RocketLaunchesTableViewProtocol.swift */,
 				D5B45DA6215A901300EF1478 /* RocketLaunchesTableViewPresenter.swift */,
 				D5B45DB1215AA60100EF1478 /* RocketLaunchesTableViewCell.swift */,
-				D5412077215AC156005BA500 /* DataManager.swift */,
 				D5412079215AF3C0005BA500 /* LaunchDetailViewController.swift */,
 				D541207B215AF3CF005BA500 /* LaunchDetailPresenter.swift */,
 				D541207D215AF3E0005BA500 /* LaunchDetailProtocol.swift */,
@@ -306,7 +303,6 @@
 				D56BB0C5215BD9FA008C68F6 /* Reachability.swift in Sources */,
 				D5B45DAA215A9FE500EF1478 /* LaunchData.swift in Sources */,
 				D541207A215AF3C0005BA500 /* LaunchDetailViewController.swift in Sources */,
-				D5412078215AC156005BA500 /* DataManager.swift in Sources */,
 				D541207E215AF3E0005BA500 /* LaunchDetailProtocol.swift in Sources */,
 				D5B45DA5215A900000EF1478 /* RocketLaunchesTableViewProtocol.swift in Sources */,
 				D5B45DA3215A8FE600EF1478 /* RocketLaunchesTableViewController.swift in Sources */,
