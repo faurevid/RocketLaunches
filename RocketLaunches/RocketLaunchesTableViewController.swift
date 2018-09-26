@@ -27,6 +27,12 @@ class RocketLaunchesTableViewController: UIViewController{
         self.title = "Upcoming Launches"
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter?.filterArrays()
+        reloadData()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "openDetail", let destination = segue.destination as? LaunchDetailViewController {
             let detailPresenter = LaunchDetailPresenter(launch: selectedLaunch!, view: destination) as LaunchDetailPresenterProtocol
@@ -39,7 +45,7 @@ class RocketLaunchesTableViewController: UIViewController{
 
 //MARK: RocketLaunchesViewControllerProtocol
 extension RocketLaunchesTableViewController: RocketLaunchesViewControllerProtocol{
-    func reloadData() {
+    @objc func reloadData() {
         launchesTableView.reloadData()
     }
     //MARK: Loader Management
@@ -57,8 +63,11 @@ extension RocketLaunchesTableViewController: RocketLaunchesViewControllerProtoco
 
 //MARK: TableView management
 extension RocketLaunchesTableViewController: UITableViewDelegate, UITableViewDataSource{
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return (presenter?.hasFavorite())! ? 2 : 1
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (presenter?.numberOfLaunches())!
+        return (presenter?.numberOfLaunches(inSection: section))!
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -79,6 +88,24 @@ extension RocketLaunchesTableViewController: UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedLaunch = presenter?.getSelectedLaunch(at: indexPath)
         performSegue(withIdentifier: "openDetail", sender: self)
+    }
+    
+    func titleForHeaderInSection(section: Int) -> String? {
+        if(numberOfSections(in: launchesTableView) == 1 ){
+            return ""
+        }
+        return section == 0 ? "Favorites" : "Upcoming"
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let contentView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 30))
+        contentView.backgroundColor = UIColor.black
+        let titleLabel = UILabel(frame: contentView.frame)
+        titleLabel.text = titleForHeaderInSection(section: section)
+        titleLabel.textColor = UIColor.white
+        titleLabel.font = UIFont(name: "HelveticaNeue-Medium", size: 20)
+        contentView.addSubview(titleLabel)
+        return contentView
     }
     
 }

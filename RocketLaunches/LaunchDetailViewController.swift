@@ -17,6 +17,7 @@ class LaunchDetailViewController: UIViewController {
     @IBOutlet weak var padMap: MKMapView!
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var loader: UIActivityIndicatorView!
+    @IBOutlet weak var favoriteBtn: UIButton!
     
     var presenter: LaunchDetailPresenterProtocol!
     
@@ -26,6 +27,10 @@ class LaunchDetailViewController: UIViewController {
        
     }
     
+    @IBAction func makeLaunchFavorite(_ sender: Any) {
+        favoriteBtn.tintColor = presenter.saveFavorite() ?UIColor.yellow : UIColor.darkGray
+       
+    }
 }
 
 extension LaunchDetailViewController: LaunchDetailViewControllerProtocol{
@@ -36,6 +41,8 @@ extension LaunchDetailViewController: LaunchDetailViewControllerProtocol{
         
         self.title = launch.name
         rocketName.text = launch.rocket.name
+        
+        favoriteBtn.tintColor = launch.isLaunchFavorite() ?UIColor.yellow : UIColor.darkGray
         
         presenter.zoomOnPadLocation(onMap: padMap)
         presenter.displayImage(onView: rocketImage)

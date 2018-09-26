@@ -26,9 +26,19 @@ class RocketLaunchesTableViewCell: UITableViewCell{
         else if(launch.status == 2){
             status.textColor = UIColor.red
         }
-        //status.text = launch.statusData?.description
+        
+//        if let status = UserDefaults.standard.object(forKey: "status") {
+//            
+//        }
+        var statusList = UserDefaults.standard.dictionary(forKey: "status")
+        
+        if (statusList != nil && statusList![String(launch.status)] != nil){
+            status.text = UserDefaults.standard.dictionary(forKey: "status")?.first(where: {String($0.key) == String(launch.status)})?.value as? String
+        }
+        
         launchWindow.text = launch.getWindow()
-        favorite.isHidden = !launch.isFavourite
+        favorite.isHidden = !launch.isLaunchFavorite()
+        favorite.tintColor = UIColor.yellow
         cardView.layer.cornerRadius = 5
         
     }

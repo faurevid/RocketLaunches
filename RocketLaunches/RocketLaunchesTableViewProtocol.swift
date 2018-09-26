@@ -17,7 +17,9 @@ protocol RocketLaunchesViewControllerProtocol: class {
 }
 
 protocol RocketLaunchesPresenterProtocol: class {
-    func numberOfLaunches() -> Int
+     func numberOfLaunches(inSection: Int) -> Int
     func willShow(cell: RocketLaunchesTableViewCell, indexPath: IndexPath )
     func getSelectedLaunch(at: IndexPath) -> LaunchData?
+    func filterArrays()
+    func hasFavorite() -> Bool
 }

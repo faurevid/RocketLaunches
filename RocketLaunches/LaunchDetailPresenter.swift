@@ -58,4 +58,27 @@ extension LaunchDetailPresenter: LaunchDetailPresenterProtocol{
         }
         }
     }
+    
+    func saveFavorite() -> Bool {
+        guard let launch = launch else {
+            return false
+        }
+        if var favoriteList = UserDefaults.standard.array(forKey: "favorites"){
+            if launch.isLaunchFavorite(){
+                let index = favoriteList.index(where: {$0 as! Int == launch.id})!
+                favoriteList.remove(at:index)
+                UserDefaults.standard.setValue(favoriteList, forKey: "favorites")
+                return false
+            }
+            else{
+                favoriteList.append(launch.id)
+              UserDefaults.standard.setValue(favoriteList, forKey: "favorites")
+                return true
+            }
+        }
+        else{
+            UserDefaults.standard.setValue([launch.id], forKey: "favorites")
+             return true
+        }
+    }
 }

@@ -21,7 +21,6 @@ class LaunchData : Decodable{
     let status: Int
     let rocket: RocketData
     let location: LocationData
-    let isFavourite: Bool
     var statusData: StatusData?
     
     private enum CodingKeys: String, CodingKey {
@@ -44,11 +43,20 @@ class LaunchData : Decodable{
         rocket = try values.decode(RocketData.self, forKey: .rocket)
         location = try values.decode(LocationData.self, forKey: .location)
         statusData = nil
-        isFavourite = false
     }
     
     func getWindow() -> String{
         return windowstart + " - " + windowend
+    }
+    
+    func isLaunchFavorite() -> Bool{
+        guard let favoriteList = UserDefaults.standard.array(forKey: "favorites") else{
+            return false
+        }
+        if(favoriteList.contains(where: {$0 as! Int == id})){
+            return true
+        }
+        return false
     }
     
     func getStatus(_ statusId: Int) {
@@ -75,6 +83,7 @@ struct StatusType: Decodable{
 }
 
 struct StatusData: Decodable {
+    let id: Int
     let name: String
     let description: String
 }

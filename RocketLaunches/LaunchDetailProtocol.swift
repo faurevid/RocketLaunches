@@ -19,4 +19,5 @@ protocol LaunchDetailPresenterProtocol: class {
      func willLoad()
     func zoomOnPadLocation(onMap: MKMapView)
     func displayImage(onView: UIImageView)
+    func saveFavorite() -> Bool
 }
