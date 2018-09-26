@@ -2,7 +2,7 @@
 //  LaunchData.swift
 //  RocketLaunches
 //
-//  Created by FAURE-VIDAL Laurene (Prestataire)  [IT-CE] on 25/09/2018.
+//  Created by FAURE-VIDAL Laurene  on 25/09/2018.
 //  Copyright © 2018 FAURE-VIDAL Laurene. All rights reserved.
 //
 
@@ -57,24 +57,6 @@ class LaunchData : Decodable{
             return true
         }
         return false
-    }
-    
-    func getStatus(_ statusId: Int) {
-        let jsonUrlString = "https://launchlibrary.net/1.3/launchstatus/\(statusId)"
-        guard let url = URL(string: jsonUrlString) else { return }
-        
-        URLSession.shared.dataTask(with: url) { (data, response, err) in
-            guard let data = data else { return }
-            do{
-                let status = try JSONDecoder().decode(StatusType.self, from: data)
-                print(status)
-                self.statusData = status.types[0]
-                
-            }
-            catch let jsonErr {
-                print("Error serializing json", jsonErr)
-            }
-            }.resume()
     }
 }
 

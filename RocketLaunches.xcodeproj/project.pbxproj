@@ -11,6 +11,7 @@
 		D541207A215AF3C0005BA500 /* LaunchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5412079215AF3C0005BA500 /* LaunchDetailViewController.swift */; };
 		D541207C215AF3CF005BA500 /* LaunchDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D541207B215AF3CF005BA500 /* LaunchDetailPresenter.swift */; };
 		D541207E215AF3E0005BA500 /* LaunchDetailProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D541207D215AF3E0005BA500 /* LaunchDetailProtocol.swift */; };
+		D56BB0C5215BD9FA008C68F6 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56BB0C4215BD9FA008C68F6 /* Reachability.swift */; };
 		D5B45D75215A8F5D00EF1478 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B45D74215A8F5D00EF1478 /* AppDelegate.swift */; };
 		D5B45D7A215A8F5D00EF1478 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5B45D78215A8F5D00EF1478 /* Main.storyboard */; };
 		D5B45D7C215A8F5F00EF1478 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5B45D7B215A8F5F00EF1478 /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 		D5412079215AF3C0005BA500 /* LaunchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetailViewController.swift; sourceTree = "<group>"; };
 		D541207B215AF3CF005BA500 /* LaunchDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetailPresenter.swift; sourceTree = "<group>"; };
 		D541207D215AF3E0005BA500 /* LaunchDetailProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetailProtocol.swift; sourceTree = "<group>"; };
+		D56BB0C4215BD9FA008C68F6 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		D5B45D71215A8F5D00EF1478 /* RocketLaunches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RocketLaunches.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5B45D74215A8F5D00EF1478 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5B45D79215A8F5D00EF1478 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				D5412079215AF3C0005BA500 /* LaunchDetailViewController.swift */,
 				D541207B215AF3CF005BA500 /* LaunchDetailPresenter.swift */,
 				D541207D215AF3E0005BA500 /* LaunchDetailProtocol.swift */,
+				D56BB0C4215BD9FA008C68F6 /* Reachability.swift */,
 			);
 			path = RocketLaunches;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D56BB0C5215BD9FA008C68F6 /* Reachability.swift in Sources */,
 				D5B45DAA215A9FE500EF1478 /* LaunchData.swift in Sources */,
 				D541207A215AF3C0005BA500 /* LaunchDetailViewController.swift in Sources */,
 				D5412078215AC156005BA500 /* DataManager.swift in Sources */,
@@ -419,7 +423,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -473,7 +477,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -498,7 +502,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -518,7 +522,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

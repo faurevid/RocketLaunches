@@ -2,7 +2,7 @@
 //  RocketLaunchesTableViewProtocol.swift
 //  RocketLaunches
 //
-//  Created by FAURE-VIDAL Laurene (Prestataire)  [IT-CE] on 25/09/2018.
+//  Created by FAURE-VIDAL Laurene  on 25/09/2018.
 //  Copyright © 2018 FAURE-VIDAL Laurene. All rights reserved.
 //
 
@@ -14,6 +14,7 @@ protocol RocketLaunchesViewControllerProtocol: class {
     func reloadData()
     func startLoader()
     func stopLoader()
+    func displayNetworkError()
 }
 
 protocol RocketLaunchesPresenterProtocol: class {

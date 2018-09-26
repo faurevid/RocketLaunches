@@ -2,7 +2,7 @@
 //  RocketLaunchesTableViewController.swift
 //  RocketLaunches
 //
-//  Created by FAURE-VIDAL Laurene (Prestataire)  [IT-CE] on 25/09/2018.
+//  Created by FAURE-VIDAL Laurene  on 25/09/2018.
 //  Copyright © 2018 FAURE-VIDAL Laurene. All rights reserved.
 //
 
@@ -18,12 +18,12 @@ class RocketLaunchesTableViewController: UIViewController{
     //MARK: LifeCycle
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        presenter = RocketLaunchesTableViewPresenter(view: self)
         selectedLaunch = nil
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter = RocketLaunchesTableViewPresenter(view: self)
         self.title = "Upcoming Launches"
     }
     
@@ -46,7 +46,10 @@ class RocketLaunchesTableViewController: UIViewController{
 //MARK: RocketLaunchesViewControllerProtocol
 extension RocketLaunchesTableViewController: RocketLaunchesViewControllerProtocol{
     @objc func reloadData() {
-        launchesTableView.reloadData()
+        launchesTableView.isHidden = false
+        if UserDefaults.standard.dictionary(forKey: "status") != nil{
+            launchesTableView.reloadData()
+        }
     }
     //MARK: Loader Management
     func startLoader(){
@@ -58,6 +61,18 @@ extension RocketLaunchesTableViewController: RocketLaunchesViewControllerProtoco
         if let loader = self.loader{
             loader.stopAnimating()
         }
+    }
+    
+    func displayNetworkError() {
+        
+        let alertController = UIAlertController(title: "No Internet Connection", message: "Make sure your device is connected to the internet.", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alertController.addAction(action)
+        
+        self.present(alertController, animated: true)
+        launchesTableView.isHidden = true
+        stopLoader()
     }
 }
 
@@ -98,6 +113,9 @@ extension RocketLaunchesTableViewController: UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if(numberOfSections(in: launchesTableView) == 1 ){
+            return UIView()
+        }
         let contentView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 30))
         contentView.backgroundColor = UIColor.black
         let titleLabel = UILabel(frame: contentView.frame)

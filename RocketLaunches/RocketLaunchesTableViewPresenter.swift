@@ -2,7 +2,7 @@
 //  RocketLaunchesTableViewPresenter.swift
 //  RocketLaunches
 //
-//  Created by FAURE-VIDAL Laurene (Prestataire)  [IT-CE] on 25/09/2018.
+//  Created by FAURE-VIDAL Laurene  on 25/09/2018.
 //  Copyright © 2018 FAURE-VIDAL Laurene. All rights reserved.
 //
 
@@ -16,12 +16,17 @@ class RocketLaunchesTableViewPresenter {
     
     init(view: RocketLaunchesViewControllerProtocol?){
         self.view = view
-        getNextLaunches(50)
+        if Reachability.isConnectedToNetwork(){
+            getNextLaunches(50)
+        }
+        else{
+            view?.displayNetworkError()
+        }
     }
     
     
     func getNextLaunches(_ numberOfLaunched: Int) {
-        let jsonUrlString = "https://launchlibrary.net/1.3/launch/next/\(numberOfLaunched)"
+        let jsonUrlString = "http://launchlibrary.net/1.3/launch/next/\(numberOfLaunched)"
         guard let url = URL(string: jsonUrlString) else { return }
         
         URLSession.shared.dataTask(with: url) { (data, response, err) in
@@ -55,14 +60,13 @@ class RocketLaunchesTableViewPresenter {
     }
     
     func getStatus(_ statusId: Int) {
-        let jsonUrlString = "https://launchlibrary.net/1.3/launchstatus/\(statusId)"
+        let jsonUrlString = "http://launchlibrary.net/1.3/launchstatus/\(statusId)"
         guard let url = URL(string: jsonUrlString) else { return }
         
         URLSession.shared.dataTask(with: url) { (data, response, err) in
             guard let data = data else { return }
             do{
                 let status = try JSONDecoder().decode(StatusType.self, from: data)
-                print(status)
                 self.save(status: status.types[0])
                 DispatchQueue.main.sync {
                     self.view?.stopLoader()
@@ -79,13 +83,12 @@ class RocketLaunchesTableViewPresenter {
         guard var statusList = UserDefaults.standard.dictionary(forKey: "status")else{
             UserDefaults.standard.setValue([String(status.id): status.description], forKey: "status")
             UserDefaults.standard.synchronize()
-            print(UserDefaults.standard.dictionaryRepresentation())
+           
             return
         }
         statusList[String(status.id)] = status.description
         UserDefaults.standard.setValue(statusList, forKey: "status")
         UserDefaults.standard.synchronize()
-        print(UserDefaults.standard.dictionaryRepresentation())
     }
     
     func filterArrays(){

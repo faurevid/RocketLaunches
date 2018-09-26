@@ -2,7 +2,7 @@
 //  DatasTests.swift
 //  RocketLaunchesTests
 //
-//  Created by FAURE-VIDAL Laurene (Prestataire)  [IT-CE] on 25/09/2018.
+//  Created by FAURE-VIDAL Laurene  on 25/09/2018.
 //  Copyright © 2018 FAURE-VIDAL Laurene. All rights reserved.
 //
 
@@ -10,27 +10,34 @@ import XCTest
 @testable import RocketLaunches
 
 class DatasTests: XCTestCase {
-    var dataManager: DataManager!
+    var presenter: RocketLaunchesTableViewPresenter!
+    var firstView: RocketLaunchesTableViewController!
     override func setUp() {
         super.setUp()
-        dataManager = DataManager()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc: RocketLaunchesTableViewController = storyboard.instantiateViewController(withIdentifier: "RocketLaunchesTableViewController") as! RocketLaunchesTableViewController
+        firstView = vc
+        _ = firstView.view
+        presenter = RocketLaunchesTableViewPresenter(view: firstView)
     }
     
     override func tearDown() {
         super.tearDown()
-        dataManager = nil
+        presenter = nil
+        firstView = nil
     }
     
     func testOneLaunch() {
-        dataManager.getNextLaunches(1)
-        sleep(5)
-        XCTAssertEqual(dataManager.launches.launches.count, 1)
+        presenter.getNextLaunches(50)
+        sleep(10)
+        XCTAssertEqual(presenter.launches?.launches.count, 50)
     }
     
     func testStatusOne(){
-        dataManager.getStatus(1)
+        presenter.getStatus(1)
         sleep(5)
-        XCTAssertEqual(dataManager.status.description, "Launch is GO")
+        let statusList = UserDefaults.standard.dictionary(forKey: "status")
+        XCTAssertEqual(statusList!["1"] as! String, "Launch is GO")
     }
     
     
