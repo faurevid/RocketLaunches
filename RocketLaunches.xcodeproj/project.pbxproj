@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		D5412078215AC156005BA500 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5412077215AC156005BA500 /* DataManager.swift */; };
+		D541207A215AF3C0005BA500 /* LaunchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5412079215AF3C0005BA500 /* LaunchDetailViewController.swift */; };
+		D541207C215AF3CF005BA500 /* LaunchDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D541207B215AF3CF005BA500 /* LaunchDetailPresenter.swift */; };
+		D541207E215AF3E0005BA500 /* LaunchDetailProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D541207D215AF3E0005BA500 /* LaunchDetailProtocol.swift */; };
 		D5B45D75215A8F5D00EF1478 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B45D74215A8F5D00EF1478 /* AppDelegate.swift */; };
 		D5B45D7A215A8F5D00EF1478 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5B45D78215A8F5D00EF1478 /* Main.storyboard */; };
 		D5B45D7C215A8F5F00EF1478 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5B45D7B215A8F5F00EF1478 /* Assets.xcassets */; };
@@ -44,6 +47,9 @@
 
 /* Begin PBXFileReference section */
 		D5412077215AC156005BA500 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		D5412079215AF3C0005BA500 /* LaunchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetailViewController.swift; sourceTree = "<group>"; };
+		D541207B215AF3CF005BA500 /* LaunchDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetailPresenter.swift; sourceTree = "<group>"; };
+		D541207D215AF3E0005BA500 /* LaunchDetailProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetailProtocol.swift; sourceTree = "<group>"; };
 		D5B45D71215A8F5D00EF1478 /* RocketLaunches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RocketLaunches.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5B45D74215A8F5D00EF1478 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5B45D79215A8F5D00EF1478 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -126,6 +132,9 @@
 				D5B45DA6215A901300EF1478 /* RocketLaunchesTableViewPresenter.swift */,
 				D5B45DB1215AA60100EF1478 /* RocketLaunchesTableViewCell.swift */,
 				D5412077215AC156005BA500 /* DataManager.swift */,
+				D5412079215AF3C0005BA500 /* LaunchDetailViewController.swift */,
+				D541207B215AF3CF005BA500 /* LaunchDetailPresenter.swift */,
+				D541207D215AF3E0005BA500 /* LaunchDetailProtocol.swift */,
 			);
 			path = RocketLaunches;
 			sourceTree = "<group>";
@@ -292,12 +301,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5B45DAA215A9FE500EF1478 /* LaunchData.swift in Sources */,
+				D541207A215AF3C0005BA500 /* LaunchDetailViewController.swift in Sources */,
 				D5412078215AC156005BA500 /* DataManager.swift in Sources */,
+				D541207E215AF3E0005BA500 /* LaunchDetailProtocol.swift in Sources */,
 				D5B45DA5215A900000EF1478 /* RocketLaunchesTableViewProtocol.swift in Sources */,
 				D5B45DA3215A8FE600EF1478 /* RocketLaunchesTableViewController.swift in Sources */,
 				D5B45DAC215AA46200EF1478 /* RocketData.swift in Sources */,
 				D5B45DB0215AA53D00EF1478 /* AgencyData.swift in Sources */,
 				D5B45D75215A8F5D00EF1478 /* AppDelegate.swift in Sources */,
+				D541207C215AF3CF005BA500 /* LaunchDetailPresenter.swift in Sources */,
 				D5B45DA7215A901300EF1478 /* RocketLaunchesTableViewPresenter.swift in Sources */,
 				D5B45DAE215AA4E600EF1478 /* PadData.swift in Sources */,
 				D5B45DB2215AA60100EF1478 /* RocketLaunchesTableViewCell.swift in Sources */,
@@ -407,7 +419,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -461,7 +473,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -474,6 +486,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SK4H8NZ92W;
 				INFOPLIST_FILE = RocketLaunches/Info.plist;
@@ -483,6 +496,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fr.lfaurevid.RocketLaunches;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -492,6 +506,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SK4H8NZ92W;
 				INFOPLIST_FILE = RocketLaunches/Info.plist;
@@ -501,6 +516,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fr.lfaurevid.RocketLaunches;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

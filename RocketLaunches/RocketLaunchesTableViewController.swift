@@ -11,18 +11,29 @@ import UIKit
 
 class RocketLaunchesTableViewController: UIViewController{
     var presenter : RocketLaunchesPresenterProtocol?
-    
+    var selectedLaunch : LaunchData?
     @IBOutlet weak var launchesTableView: UITableView!
+    @IBOutlet weak var loader: UIActivityIndicatorView!
     
     //MARK: LifeCycle
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         presenter = RocketLaunchesTableViewPresenter(view: self)
+        selectedLaunch = nil
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.title = "Upcoming Launches"
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "openDetail", let destination = segue.destination as? LaunchDetailViewController {
+            let detailPresenter = LaunchDetailPresenter(launch: selectedLaunch!, view: destination) as LaunchDetailPresenterProtocol
+            destination.presenter = detailPresenter
+            
+            }
+        
     }
 }
 
@@ -30,6 +41,17 @@ class RocketLaunchesTableViewController: UIViewController{
 extension RocketLaunchesTableViewController: RocketLaunchesViewControllerProtocol{
     func reloadData() {
         launchesTableView.reloadData()
+    }
+    //MARK: Loader Management
+    func startLoader(){
+        if let loader = self.loader{
+            loader.startAnimating()
+        }
+    }
+    func stopLoader(){
+        if let loader = self.loader{
+            loader.stopAnimating()
+        }
     }
 }
 
@@ -52,6 +74,11 @@ extension RocketLaunchesTableViewController: UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedLaunch = presenter?.getSelectedLaunch(at: indexPath)
+        performSegue(withIdentifier: "openDetail", sender: self)
     }
     
 }

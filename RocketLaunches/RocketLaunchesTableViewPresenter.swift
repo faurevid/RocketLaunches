@@ -17,6 +17,7 @@ class RocketLaunchesTableViewPresenter {
         getNextLaunches(50)
     }
     
+    
     func getNextLaunches(_ numberOfLaunched: Int) {
         let jsonUrlString = "https://launchlibrary.net/1.3/launch/next/\(numberOfLaunched)"
         guard let url = URL(string: jsonUrlString) else { return }
@@ -27,6 +28,7 @@ class RocketLaunchesTableViewPresenter {
                 let launches = try JSONDecoder().decode(LaunchesData.self, from: data)
                 self.launches = launches
                 DispatchQueue.main.async {
+                    self.view?.stopLoader()
                     self.view?.reloadData()
                 }
                 
@@ -50,6 +52,10 @@ extension RocketLaunchesTableViewPresenter: RocketLaunchesPresenterProtocol{
             return
         }
             cell.show(launch: launch)
+    }
+    
+    func getSelectedLaunch(at: IndexPath) -> LaunchData?{
+        return launches?.launches[at.row]
     }
 }
 

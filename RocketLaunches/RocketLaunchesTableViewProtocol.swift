@@ -12,9 +12,12 @@ import UIKit
 
 protocol RocketLaunchesViewControllerProtocol: class {
     func reloadData()
+    func startLoader()
+    func stopLoader()
 }
 
 protocol RocketLaunchesPresenterProtocol: class {
     func numberOfLaunches() -> Int
     func willShow(cell: RocketLaunchesTableViewCell, indexPath: IndexPath )
+    func getSelectedLaunch(at: IndexPath) -> LaunchData?
 }

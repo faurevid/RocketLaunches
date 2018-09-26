@@ -11,16 +11,16 @@ import UIKit
 
 class RocketData : Decodable{
     var name: String
-    //var image: UIImage
+    var imageURL: String
     
     private enum CodingKeys: String, CodingKey {
         case name
-        //case image
+        case imageURL
     }
     
     required init(from decoder:Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         name = try values.decode(String.self, forKey: .name)
-        //image = try values.decode(UIImage.self, forKey: .name)
+        imageURL = try values.decode(String.self, forKey: .imageURL)
     }
 }
